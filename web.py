@@ -15,4 +15,4 @@ def lero():
     i = sayit()
     return i
 
-run(server='gevent', port=os.environ.get('PORT', 5000))
+run(server='gevent', port=os.environ.get('PORT', 5000), host="0.0.0.0")
