@@ -21,7 +21,7 @@
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <link rel="shortcut icon" href="../assets/ico/favicon.ico">
+    <link rel="shortcut icon" href="/static/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/static/img/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="static/img/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/static/img/ico/apple-touch-icon-72-precomposed.png">
@@ -34,6 +34,9 @@
 
       <div class="hero-unit">
           <p id="lerolero"></p>
+          <br><br>
+          <i class="icon-refresh" onclick="reload();"></i>
+          <i id = "tweet" class="icon-retweet"></i>
       </div>
     <div class="footer">
         <p>API: http://lerolero.herokuapp.com/lerolero</p>
@@ -43,9 +46,17 @@
     <script src="/static/js/jquery.min.js"></script>
     <script>
         $(function(){
-            $.get('/lerolero', function(d){
-                $('#lerolero').html(d); 
-            });
+            reload = function() { $.get('/lerolero', function(d){
+                            $('#lerolero').html(d); 
+                        });
+                    };
+            tweet = function(e) {
+                var content = $('#lerolero').html();
+                if (content.length > 140) content = content.slice(0, 136) + "...";
+                window.open('http://twitter.com/share?text=' + content, 'twitterwindow', 'height=450, width=550, top='+ ($(window).height()/2 - 225) +', left='+$(window).width()/2 +', toolbar=0, location=0, menubar=0, directories=0, scrollbars=0');
+            };
+            $('#tweet', this).bind('click', tweet);
+            reload();
         })
     </script>
   </body>
