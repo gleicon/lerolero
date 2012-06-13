@@ -1,0 +1,28 @@
+<application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:apigee="http://api.apigee.com/wadl/2010/07/" 
+  xmlns="http://wadl.dev.java.net/2009/02"
+  xsi:schemaLocation="http://wadl.dev.java.net/2009/02 http://apigee.com/schemas/wadl-schema.xsd http://api.apigee.com/wadl/2010/07/ http://apigee.com/schemas/apigee-wadl-extensions.xsd">
+
+  <!-- Base defines the domain and base path of the endpoint -->
+  <resources base="http://lerolero.herokuapp.com">
+
+      <resource path="/lerolero">
+      <method id="lerolero" name="GET" apigee:displayName="Quote">
+
+        <apigee:tags>
+          <apigee:tag primary="true">Lerolero</apigee:tag>
+          <apigee:tag>QOTD</apigee:tag>
+        </apigee:tags>
+
+        <apigee:authentication required="false" />
+
+        <apigee:example url="/lerolero" />
+
+        <doc title="" apigee:url="http://lerolero.herokuapp.com/lerolero">
+            Use com moderação - argumentos para reuniões.
+	    </doc>
+      </method>
+    </resource>
+  </resources>
+</application>

@@ -10,6 +10,10 @@ STATIC_ROOT_PATH = "./static/"
 def send_file(filename='index.html'):                                         
     return static_file(filename, root=STATIC_ROOT_PATH)     
 
+@get('/wadl.xml')
+def wadl():
+    return static_file("wadl.xml", root=STATIC_ROOT_PATH)
+
 @get('/lerolero')
 def lero():
     i = sayit()
